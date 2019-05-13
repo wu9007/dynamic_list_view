@@ -1,0 +1,21 @@
+name: dynamic_list_view
+description: A list component that can refreshes and adds more data for Flutter App.
+version: 0.1.0
+author:
+homepage:
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    androidPackage: com.shinow.dynamic_list_view
+    pluginClass: DynamicListViewPlugin
