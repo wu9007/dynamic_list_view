@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<List> _dataRequester() async {
-    return Future.delayed(Duration(seconds: 2), () {
+    return Future.delayed(Duration(seconds: 1), () {
       return List.generate(10, (i) => 15 + i);
     });
   }
