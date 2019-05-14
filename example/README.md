@@ -1,16 +1,48 @@
 # dynamic_list_view_example
 
-Demonstrates how to use the dynamic_list_view plugin.
+```dart
+import 'package:dynamic_list_view/DynamicListView.dart';
+import 'package:flutter/material.dart';
+import 'dart:async';
 
-## Getting Started
+void main() => runApp(MyApp());
 
-This project is a starting point for a Flutter application.
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
 
-A few resources to get you started if this is your first Flutter project:
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(primaryColor: Colors.amber),
+      home: Scaffold(
+        body: Container(
+          decoration: BoxDecoration(color: Color.fromRGBO(200, 200, 200, 0.1)),
+          child: DynamicListView.build(
+            itemBuilder: _itemBuilder,
+            dataRequester: _dataRequester,
+            initRequester: _initRequester,
+          ),
+        ),
+      ),
+    );
+  }
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
+  Future<List> _initRequester() async {
+    return Future.value(List.generate(15, (i) => i));
+  }
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+  Future<List> _dataRequester() async {
+    return Future.delayed(Duration(seconds: 1), () {
+      return List.generate(10, (i) => 15 + i);
+    });
+  }
+
+  Function _itemBuilder = (List dataList, BuildContext context, int index) {
+    String title = dataList[index].toString();
+    return ListTile(title: Text("Number $title"));
+  };
+}
+```

@@ -13,6 +13,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(primaryColor: Colors.amber),
       home: Scaffold(
         body: Container(
           decoration: BoxDecoration(color: Color.fromRGBO(200, 200, 200, 0.1)),

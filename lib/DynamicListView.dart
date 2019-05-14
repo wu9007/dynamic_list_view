@@ -45,18 +45,20 @@ class DynamicListViewState extends State<DynamicListView> {
 
   @override
   Widget build(BuildContext context) {
+    Color loadingColor = Theme.of(context).primaryColor;
     return this._dataList == null
-        ? loadingProgress()
+        ? loadingProgress(loadingColor)
         : RefreshIndicator(
+            color: loadingColor,
             onRefresh: this._onRefresh,
-            backgroundColor: Colors.blue,
             child: ListView.separated(
               separatorBuilder: (BuildContext context, int index) =>
                   Divider(height: 1.0, color: Colors.black54),
               itemCount: _dataList.length + 1,
               itemBuilder: (context, index) {
                 if (index == _dataList.length) {
-                  return opacityLoadingProgress(isPerformingRequest);
+                  return opacityLoadingProgress(
+                      isPerformingRequest, loadingColor);
                 } else {
                   return widget.itemBuilder(_dataList, context, index);
                 }
@@ -94,16 +96,16 @@ class DynamicListViewState extends State<DynamicListView> {
   }
 }
 
-Widget loadingProgress() {
+Widget loadingProgress(loadingColor) {
   return Center(
     child: CircularProgressIndicator(
       strokeWidth: 2.0,
-      valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+      valueColor: AlwaysStoppedAnimation<Color>(loadingColor),
     ),
   );
 }
 
-Widget opacityLoadingProgress(isPerformingRequest) {
+Widget opacityLoadingProgress(isPerformingRequest, loadingColor) {
   return new Padding(
     padding: const EdgeInsets.all(8.0),
     child: new Center(
@@ -111,7 +113,7 @@ Widget opacityLoadingProgress(isPerformingRequest) {
         opacity: isPerformingRequest ? 1.0 : 0.0,
         child: new CircularProgressIndicator(
           strokeWidth: 2.0,
-          valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+          valueColor: AlwaysStoppedAnimation<Color>(loadingColor),
         ),
       ),
     ),

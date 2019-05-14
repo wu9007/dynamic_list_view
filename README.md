@@ -17,7 +17,7 @@ Add this to your package's pubspec.yaml file:
 
 ```
 dependencies:
- dynamic_list_view: ^0.1.4
+ dynamic_list_view: ^0.1.5
 ```
 
 ## Usage example
@@ -40,7 +40,6 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         body: Container(
-          decoration: BoxDecoration(color: Color.fromRGBO(200, 200, 200, 0.1)),
           child: DynamicListView.build(
             itemBuilder: _itemBuilder,
             dataRequester: _dataRequester,
