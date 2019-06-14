@@ -1,5 +1,9 @@
 Language: [English](README.md) | [中文简体](README.md)
 
+**This component has been included into [lsp_designer](https://pub.dartlang.org/packages/lsp_designer), Welcome to use it.**
+
+**该组件已被纳入到 [lsp_designer](https://pub.dartlang.org/packages/lsp_designer)， 欢迎使用。**
+
 # Dynamic List View
   
 [![License][license-image]][license-url] 
@@ -7,9 +11,13 @@ Language: [English](README.md) | [中文简体](README.md)
 
 A list component that can refreshes and adds more data for Flutter App. 🚀
 
-[github](https://github.com/leyan95/dynamic_list_view)
+[dynamic_list_view github](https://github.com/leyan95/dynamic_list_view)
 
 ![Dynamic List View](https://upload-images.jianshu.io/upload_images/3646846-61ee6753792d9abc.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/221/format/webp)
+
+[lsp_designer github](https://github.com/leyan95/lsp_designer)
+
+![lsp_designer.gif](https://upload-images.jianshu.io/upload_images/3646846-7dd1837bedd46914.gif?imageMogr2/auto-orient/strip)
 
 ## Installation
 
@@ -17,7 +25,7 @@ Add this to your package's pubspec.yaml file:
 
 ```
 dependencies:
- dynamic_list_view: ^0.1.5
+ dynamic_list_view: ^0.1.6
 ```
 
 ## Usage example
