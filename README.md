@@ -8,6 +8,7 @@ Language: [English](README.md) | [中文简体](README.md)
   
 [![License][license-image]][license-url] 
 [![Pub](https://img.shields.io/pub/v/dynamic_list_view.svg?style=flat-square)](https://pub.dartlang.org/packages/dynamic_list_view)
+[![Pub](https://img.shields.io/pub/v/lsp_designer.svg?style=flat-square)](https://pub.dartlang.org/packages/lsp_designer)
 
 A list component that can refreshes and adds more data for Flutter App. 🚀
 
@@ -17,15 +18,13 @@ A list component that can refreshes and adds more data for Flutter App. 🚀
 
 [lsp_designer github](https://github.com/leyan95/lsp_designer)
 
-![lsp_designer.gif](https://upload-images.jianshu.io/upload_images/3646846-7dd1837bedd46914.gif?imageMogr2/auto-orient/strip)
-
 ## Installation
 
 Add this to your package's pubspec.yaml file:
 
 ```
 dependencies:
- dynamic_list_view: ^0.1.6
+ dynamic_list_view: ^0.1.7
 ```
 
 ## Usage example
