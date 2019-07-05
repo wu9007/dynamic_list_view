@@ -24,7 +24,7 @@ Add this to your package's pubspec.yaml file:
 
 ```
 dependencies:
- dynamic_list_view: ^0.1.7
+ dynamic_list_view: ^0.1.8
 ```
 
 ## Usage example
