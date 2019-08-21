@@ -1,4 +1,5 @@
 import 'package:dynamic_list_view/DynamicListView.dart';
+import 'package:dynamic_list_view_example/custom_loading.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -21,6 +22,8 @@ class _MyAppState extends State<MyApp> {
             itemBuilder: _itemBuilder,
             dataRequester: _dataRequester,
             initRequester: _initRequester,
+            moreLoadingWidget: CustomLoading(),
+            initLoadingWidget: CustomLoading(),
           ),
         ),
       ),
@@ -28,11 +31,13 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<List> _initRequester() async {
-    return Future.value(List.generate(15, (i) => i));
+    return Future.delayed(Duration(seconds: 2), () {
+      return List.generate(15, (i) => i);
+    });
   }
 
   Future<List> _dataRequester() async {
-    return Future.delayed(Duration(seconds: 1), () {
+    return Future.delayed(Duration(seconds: 5), () {
       return List.generate(10, (i) => 15 + i);
     });
   }
