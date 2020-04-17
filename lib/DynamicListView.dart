@@ -1,7 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import 'loading.dart';
+Widget defaultLoadingWidget = SpinKitWave(
+  size: 30,
+  color: Colors.grey[350],
+  duration: const Duration(milliseconds: 1000),
+  itemCount: 7,
+);
 
 /// 下拉刷新，上拉加载更多数据
 class DynamicListView extends StatefulWidget {
@@ -12,8 +18,7 @@ class DynamicListView extends StatefulWidget {
     @required this.initRequester,
     this.initLoadingWidget,
     this.moreLoadingWidget,
-  })
-      : assert(itemBuilder != null),
+  })  : assert(itemBuilder != null),
         assert(dataRequester != null),
         assert(initRequester != null),
         super(key: key);
@@ -52,35 +57,34 @@ class DynamicListViewState extends State<DynamicListView> {
 
   @override
   Widget build(BuildContext context) {
-    Color loadingColor = Theme
-        .of(context)
-        .primaryColor;
+    Color loadingColor = Theme.of(context).primaryColor;
     return this._dataList == null
         ? loadingProgress(
-      loadingColor,
-      initLoadingWidget: this.widget.initLoadingWidget,
-    )
+            loadingColor,
+            initLoadingWidget: this.widget.initLoadingWidget,
+          )
         : RefreshIndicator(
-      displacement: 20,
-      color: loadingColor,
-      onRefresh: this._onRefresh,
-      child: ListView.separated(
-        separatorBuilder: (BuildContext context, int index) => Divider(height: 1.0, color: Colors.black54),
-        itemCount: _dataList.length + 1,
-        itemBuilder: (context, index) {
-          if (index == _dataList.length) {
-            return opacityLoadingProgress(
-              isPerformingRequest,
-              loadingColor,
-              loadingWidget: this.widget.moreLoadingWidget,
-            );
-          } else {
-            return widget.itemBuilder(_dataList, context, index);
-          }
-        },
-        controller: _controller,
-      ),
-    );
+            displacement: 20,
+            color: loadingColor,
+            onRefresh: this._onRefresh,
+            child: ListView.separated(
+              separatorBuilder: (BuildContext context, int index) =>
+                  Divider(height: 1.0, color: Colors.black54),
+              itemCount: _dataList.length + 1,
+              itemBuilder: (context, index) {
+                if (index == _dataList.length) {
+                  return opacityLoadingProgress(
+                    isPerformingRequest,
+                    loadingColor,
+                    loadingWidget: this.widget.moreLoadingWidget,
+                  );
+                } else {
+                  return widget.itemBuilder(_dataList, context, index);
+                }
+              },
+              controller: _controller,
+            ),
+          );
   }
 
   /// 刷新 数据初始化
@@ -97,9 +101,11 @@ class DynamicListViewState extends State<DynamicListView> {
     if (newDataList != null) {
       if (newDataList.length == 0) {
         double edge = 50.0;
-        double offsetFromBottom = _controller.position.maxScrollExtent - _controller.position.pixels;
+        double offsetFromBottom =
+            _controller.position.maxScrollExtent - _controller.position.pixels;
         if (offsetFromBottom < edge) {
-          _controller.animateTo(_controller.offset - (edge - offsetFromBottom), duration: new Duration(milliseconds: 500), curve: Curves.easeOut);
+          _controller.animateTo(_controller.offset - (edge - offsetFromBottom),
+              duration: new Duration(milliseconds: 500), curve: Curves.easeOut);
         }
       } else {
         _dataList.addAll(newDataList);
@@ -111,16 +117,17 @@ class DynamicListViewState extends State<DynamicListView> {
 
 Widget loadingProgress(loadingColor, {Widget initLoadingWidget}) {
   if (initLoadingWidget == null) {
-    initLoadingWidget = Loading();
+    initLoadingWidget = defaultLoadingWidget;
   }
   return Center(
     child: initLoadingWidget,
   );
 }
 
-Widget opacityLoadingProgress(isPerformingRequest, loadingColor, {Widget loadingWidget}) {
+Widget opacityLoadingProgress(isPerformingRequest, loadingColor,
+    {Widget loadingWidget}) {
   if (loadingWidget == null) {
-    loadingWidget = Loading();
+    loadingWidget = defaultLoadingWidget;
   }
   return new Padding(
     padding: const EdgeInsets.all(8.0),

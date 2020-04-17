@@ -1,30 +1,6 @@
-Language: [English](README.md) | [中文简体](README.md)
-
-# Dynamic List View
-  
-[![License][license-image]][license-url] 
-[![Pub](https://img.shields.io/pub/v/dynamic_list_view.svg?style=flat-square)](https://pub.dartlang.org/packages/dynamic_list_view)
-
-A list component that can refreshes and adds more data for Flutter App. 🚀
-
-[github](https://github.com/leyan95/dynamic_list_view)
-
-![Dynamic List View](https://upload-images.jianshu.io/upload_images/3646846-c2ecb2db27600296.gif?imageMogr2/auto-orient/strip|imageView2/2/w/216/format/webp)
-
-
-## Installation
-
-Add this to your package's pubspec.yaml file:
-
-```
-dependencies:
- dynamic_list_view: ^0.2.0
-```
-
-## Usage example
-```dart
 import 'package:dynamic_list_view/dynamic_list.dart';
 import 'package:flutter/material.dart';
+import 'custom_loading.dart';
 
 void main() => runApp(MyApp());
 
@@ -51,6 +27,7 @@ class _MyAppState extends State<MyApp> {
             itemBuilder: _itemBuilder,
             dataRequester: _dataRequester,
             initRequester: _initRequester,
+            initLoadingWidget: CustomLoading(),
           ),
         ),
         persistentFooterButtons: <Widget>[
@@ -81,19 +58,3 @@ class _MyAppState extends State<MyApp> {
     return ListTile(title: Text("Number $title"));
   };
 }
-```
-
-## Contribute
-
-We would ❤️ to see your contribution!
-
-## License
-
-Distributed under the MIT license. See ``LICENSE`` for more information.
-
-## About
-
-Created by Shusheng.
-
-[license-image]: https://img.shields.io/badge/License-MIT-blue.svg
-[license-url]: LICENSE
