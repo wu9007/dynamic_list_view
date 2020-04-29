@@ -22,12 +22,14 @@ class _MyAppState extends State<MyApp> {
           title: Text('Dynamic list', style: TextStyle(color: Colors.black)),
         ),
         body: Container(
-          child: DynamicList.build(
+          child: DynamicList.separated(
             controller: _dynamicListController,
             itemBuilder: _itemBuilder,
             dataRequester: _dataRequester,
             initRequester: _initRequester,
             initLoadingWidget: CustomLoading(),
+            separatorBuilder: (BuildContext context, int index) =>
+                Divider(height: 1.0, color: Colors.black54),
           ),
         ),
         persistentFooterButtons: <Widget>[

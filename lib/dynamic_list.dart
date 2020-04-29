@@ -35,6 +35,7 @@ class DynamicList extends StatefulWidget {
     this.moreLoadingWidget,
     this.controller,
     this.scrollDirection = Axis.vertical,
+    this.separatorBuilder,
   })  : assert(itemBuilder != null),
         assert(dataRequester != null),
         assert(initRequester != null),
@@ -49,6 +50,8 @@ class DynamicList extends StatefulWidget {
   final bool separated;
   final DynamicListController controller;
   final Axis scrollDirection;
+  IndexedWidgetBuilder separatorBuilder = (BuildContext context, int index) =>
+      Divider(height: 1.0, color: Theme.of(context).hintColor);
 
   @override
   State createState() => new DynamicListState();
@@ -96,9 +99,7 @@ class DynamicListState extends State<DynamicList> {
             child: this.widget.separated
                 ? ListView.separated(
                     scrollDirection: widget.scrollDirection,
-                    separatorBuilder: (BuildContext context, int index) =>
-                        Divider(
-                            height: 1.0, color: Theme.of(context).hintColor),
+                    separatorBuilder: widget.separatorBuilder,
                     itemCount: _dataList.length + 1,
                     itemBuilder: (context, index) {
                       if (index == _dataList.length) {
