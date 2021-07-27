@@ -9,7 +9,7 @@ A list component that can refreshes and adds more data for Flutter App. 🚀
 
 [github](https://github.com/leyan95/dynamic_list_view)
 
-![Dynamic List View](https://upload-images.jianshu.io/upload_images/3646846-c2ecb2db27600296.gif?imageMogr2/auto-orient/strip|imageView2/2/w/216/format/webp)
+![Dynamic List View](https://github.com/subair-zufi/dynamic_list_view/blob/master/gif.gif)
 
 
 ## Installation
